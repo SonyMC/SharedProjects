@@ -4,8 +4,7 @@ ChatGPT & LangChain Integration
 
 Section 1 - Using Langchain the simple way:
 ------------------------------------------
-LangChainSimple.png
-LangChainSimple_2.png
+
 
 
 

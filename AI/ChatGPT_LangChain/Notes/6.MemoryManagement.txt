@@ -1,68 +1,8 @@
 Interactions with Memory Management
 -----------------------------------
 
-AppOverview_ChatBot.png
-LLM_1.png
-
-Completion Style LLM model:
-LLM_2.png
-
     Refer: 
     https://platform.openai.com/playground/prompts?models=gpt-4o
-    - On RHS -> Select dropdown (Default 'Responses API') -> Chat Completions API
-
-    - ON prompt: 
-        - I am a Solution Architect who jokes about designs . Have you ever noticed how designs are
-            - submit 
-        - AI wil ltry to complete as much a spossible
-
-
-Conversation Style LLM model:
-LLM_3.png
-
-
-Conversation Style vs Completion Style LLM:
-LLM_4.png
-
-
-Conversational Style LLM Labels:
-LLM_5.png
-
-
-LLM_6.png
-
-
-LLM_7.png
-
-LLM_8.png
-
-LLM_9.png
-
-PromptTemplate.png
-
-ChatPromptTemplate_1.png
-ChatPromptTemplate_2.png
-ChatPromptTemplate_3.png
-
-ChatMemory_1.png
-ChatMemory_2.png
-ChatMemory_3.png
-ChatMemory_4.png
-ChatMemory_5.png
-ChatMemory_6.png
-ChatMemory_7.png
-ChatMemory_8.png
-ChatMemory_9.png
-ChatMemory_10.png
-ChatMemory_11.png
-ChatMemory_12.png
-ChatMemory_13.png
-ChatMemory_14.png
-ChatMemory_15.png
-ChatMemory_16.png
-
-
-
 
 
 

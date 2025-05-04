@@ -1,6 +1,3 @@
-Proj_Setup_1.png
-Proj_Setup_2.png
-
 
 Project:
 
