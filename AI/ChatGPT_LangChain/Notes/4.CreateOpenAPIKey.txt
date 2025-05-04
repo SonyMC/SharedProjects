@@ -5,7 +5,6 @@ IMPORTANT PLEASE READ
 
 The OpenAI API doesn't have a free tier. As of summer 2024, they no longer offer free credits to new user accounts. You must add a credit card and load a balance of $5 USD (or whatever your regional equivalent is). Otherwise, you will get persistent rate limit errors when running the project code.
 
-Some students have asked if they can just use a different LLM such as Gemini or LLama, etc. This is explicitly a ChatGPT with LangChain course (using Python). You are more than welcome to try and replace ChatGPT, however, we are not able to provide support for any of these changes. The code and projects were not tested using any other LLMs, so, you will likely find that many things may not work as shown.
 
 Obtaining API Key
 1. Open your browser and navigate to https://platform.openai.com/
