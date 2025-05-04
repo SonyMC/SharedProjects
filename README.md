@@ -1,4 +1,4 @@
-AI Projects Repository
+Projects Repository
 This repository contains various AI projects, alongside other useful resources, tailored for the discerning consumer. Each project borrows inspiration and code from open-source repositories, with due attribution provided in the respective README.md files where applicable.
 How to Run
 - Clone the Repository:git clone <your-repo-url>
