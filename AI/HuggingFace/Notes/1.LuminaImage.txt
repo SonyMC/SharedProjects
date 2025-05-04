@@ -1,0 +1,36 @@
+
+
+Project:
+D:HuggingFace\Project\LuminaImage
+
+cmd: cd \HuggingFace\Project\LuminaImage
+cmd: pipenv shell
+cmd: pipenv install
+
+Install Torch for non CUDA and using CPU( significantl slower than NVIDIA CUDA enabled GPU)
+cmd: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+
+# Install diffusers and other required packages
+pip install diffusers transformers accelerate safetensors pillow python-dotenv
+
+
+cmd: python main_1.py
+
+
+
+
+
+If you have a ROCm enabled AMD GPU:
+
+
+
+    - Check your AMD GPU's compatibility with ROCm: Not all AMD GPUs are supported
+    - Switch on Developer Mode on Windows:
+        - https://learn.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development
+
+    - cmd: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm5.6
+    - cmd: python main_2.py
+
+
+

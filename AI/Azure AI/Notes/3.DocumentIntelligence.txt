@@ -1,0 +1,60 @@
+
+Document Intelligence:
+-------------------------------
+
+
+Azure AI Services -> Language Service:
+		- Create: 
+			- Create language : 
+				- Select additional features
+				- Continue to create
+
+	
+		- Subscription:  Azure subscription 1
+		- Resource Group : xxx_Azure_AI
+		- Instance Details :
+			- Region : East US
+			- Name : xxx-document-intelligence-instance
+
+			- Pricing tier:Standard S0
+
+		- Azure search region : East US
+		- Azure search pricing tier : Free F( 3 indexes) 
+
+
+		- Review & Create 
+
+
+Document Intelligence Studio:
+-----------------------------
+- Select subscription and resources as configured above
+
+
+Documentation:
+https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/?view=doc-intel-4.0.0
+
+
+SDK:
+https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/quickstarts/get-started-sdks-rest-api?view=doc-intel-4.0.0&pivots=programming-language-java
+
+Project:
+D:\OneDrive\Study\AI\Azure AI Fundamentals\Notes\Code\doc-intel-app
+D:\OneDrive\Study\AI\Azure AI Fundamentals\Notes\Code\doc-intel-app-preBuiltModel
+
+
+
+Analyze Text APIs:
+-------------------
+https://learn.microsoft.com/en-us/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable#analyze-sentiment
+
+Postman:
+	- AzureAI 
+
+
+
+Code:
+D:\OneDrive\Study\AI\Azure AI Fundamentals\Notes\Code
+
+
+
+

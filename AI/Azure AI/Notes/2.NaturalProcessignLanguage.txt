@@ -1,0 +1,49 @@
+
+Natural Processing language:
+-------------------------------
+
+
+Translator Project:
+\Notes\Code\translator-text-app
+
+
+Azure AI Services -> Language Service:
+		- Create: 
+			- Create language : 
+				- Select additional features
+				- Continue to create
+
+	
+		- Subscription:  Azure subscription 1
+		- Resource Group : xxx_Azure_AI
+		- Instance Details :
+			- Region : East US
+			- Name : xxx-Language-Instance
+
+			- Pricing tier: Free F0
+
+		- Azure search region : East US
+		- Azure search pricing tier : Free F( 3 indexes) 
+		- New Storage Account: 
+				- Name = xxxaistorage
+				- Storage account type = Standard LRS
+
+		- Review & Create 
+
+APIs:
+- Language Studio : 
+	- Text Summarization -> Open QuickStart:
+			- https://learn.microsoft.com/en-us/azure/ai-services/language-service/summarization/quickstart?pivots=rest-api&tabs=text-summarization%2Cwindows
+
+	- Analyze text: https://learn.microsoft.com/en-us/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2023-04-01&tabs=HTTP
+	- REST API:
+		- Postman: 
+			- Collection: AzureAI:
+					- POST: TextSummary_GenerateJobID
+							- 202 accepted
+							- Copy operation-location from response header :
+									https://xxx-language-instance.cognitiveservices.azure.com/language/analyze-text/jobs/5edc0df1-29fd-4340-bba8-7571745480dd?api-version=2023-04-01
+					- GET: TextSummary_Get
+							- Use the job id within the operation-location response header above to create the url:
+							- 200 OK
+

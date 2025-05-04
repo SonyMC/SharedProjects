@@ -1,0 +1,6 @@
+
+
+
+
+** Important: Create required resource instance under resource group  mailsonymathew_Azure_AI
+

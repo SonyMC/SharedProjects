@@ -1,0 +1,13 @@
+Installation and Setup: 
+Refer:https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/contentsafety/azure-ai-contentsafety
+
+Prerequisites
+Python 3.7 or later is required to use this package.
+You need an Azure subscription to use this package.
+An Azure AI Content Safety resource, if no existing resource, you could create a new one.
+
+
+Code\content-safety-python:
+
+
+

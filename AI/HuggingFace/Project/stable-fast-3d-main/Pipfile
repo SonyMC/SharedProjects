@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+einops = "==0.7.0"
+jaxtyping = "==0.2.31"
+omegaconf = "==2.3.0"
+transformers = "==4.42.3"
+open-clip-torch = "==2.24.0"
+trimesh = "==4.4.1"
+numpy = "==1.26.4"
+huggingface-hub = "==0.23.4"
+rembg = "==2.0.57"
+pynanoinstantmeshes = "==0.0.3"
+gpytoolbox = "==0.2.0"
+texture-baker = {file = "texture_baker"}
+uv-unwrapper = {file = "uv_unwrapper"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

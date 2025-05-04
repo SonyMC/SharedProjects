@@ -1,0 +1,28 @@
+Custom Vision (Azure AI Vision): Create custom models using your own images
+
+
+Azure AI Services -> Custom Vision -> Create Custom Vision:
+
+Create Options: Both 
+Subscription: 	xxx_Azure_AI
+Region : East US
+Name: xxx
+
+Training pricing tier: Free 
+
+Prediction pricing tier: Free 
+
+
+review + create 
+
+
+
+After resource creation: 
+
+	- Go to training resource -> Custom Vision Portal -> Sign in -> New Project:
+			- Project Type: Object detection 
+			- Domain : general 
+	- Go to project -> Add images -> \downloads\imageset
+		- Tag each project after selecting the desired area
+		- Note: You must tag atleast 16 images
+		- After tagging, do a quick test and load an apple image to see the prediction work.  	

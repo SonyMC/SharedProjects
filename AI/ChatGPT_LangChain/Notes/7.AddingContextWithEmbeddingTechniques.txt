@@ -1,0 +1,184 @@
+Adding Context With Embedding Techniques 
+-----------------------------------------
+
+ProjectOverview_1.png
+ProjectOverview_2.png
+ProjectOverview_3.png
+
+Loaders_1.png
+Loaders_2.png
+Loaders_3.png
+Loaders_4.pngs
+
+Search_Criteria_1.png
+Search_Criteria_2.png
+Search_Criteria_3.png
+Search_Criteria_4.png
+Search_Criteria_5.png
+Search_Criteria_6.png
+
+Embeddings_1.png
+Embeddings_2.png
+Embeddings_3.png
+
+Embeddings_Exercise_1.png
+Embeddings_Exercise_2.png
+Embeddings_Exercise_3.png
+Embeddings_Exercise_4.png
+Embeddings_Exercise_5.png
+Embeddings_Exercise_6.png
+
+
+Embedding_Project_Overview.png
+Embedding_Project_Overview_2.png
+
+EmbeddingModels.png
+
+ChromaDB.png
+Project_Objective.png
+RetrievalQA.png
+Retriever.png
+
+ChainTypeStuff.png
+ChainType_MapReduce.png
+ChainType_MapRerank.png
+ChainType_Refine.png
+
+Duplication_1.png
+Duplication_2_EmbeddingsRedundantFilter.png
+Duplication_3_EmbeddingsRedundantFilter.png
+Duplication_4_EmbeddingsRedundantFilter.png
+Duplication_5_CustomRetriever.png
+Duplication_5_CustomRetriever_2.png
+Duplication_6_EmbedQuery.png
+Duplication_7_SimilaritySearch.png
+Duplication_8_SimilaritySearchByVector.png
+Duplication_9_MaxMarginalRelevanceSearchByVector.png
+
+VisualizeEmbeddings_1.png
+VisualizeEmbeddings_2.png
+
+Project Setup:
+--------------
+Deprecation warnings about Langchain 0.1.0 and 0.2.0 should be ignored as we are not using these versions!
+
+Python Version
+First, you must have the 3.11 version of Python installed:
+
+https://www.python.org/downloads/
+
+This is very important, as only a few versions of Python support LangChain and OpenAI.
+
+Pipenv Installation and Configuration
+1. If you have not already done so, create a facts directory somewhere on your development machine.
+2. If you have not already installed Pipenv from the previous section, you must do that now. In your terminal run pip install pipenv or depending on your environment, pip3 install pipenv
+
+3. Create a file in your facts project directory called Pipfile
+
+4. Copy paste the following code into that new Pipfile (or drag and drop the file that is attached to this lecture into your facts project directory):
+
+
+
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+ 
+[packages]
+langchain = "==0.0.352"
+openai = "==0.27.8"
+python-dotenv = "==1.0.0"
+tiktoken = "*"
+chromadb = "*"
+ 
+[dev-packages]
+ 
+[requires]
+python_version = "3.11"
+
+
+5. Inside your facts project directory, run the following command to install your dependencies from the Pipfile:
+
+pipenv install
+
+6. Run the following command to create and enter a new environment:
+
+pipenv shell
+
+After doing this your terminal will now be running commands in this new environment managed by Pipenv.
+
+Once inside this shell, you can run Python commands just as shown in the lecture videos.
+
+eg:
+
+python main.py
+
+7. If you make any changes to your environment variables or keys, you may find that you need to exit the shell and re-enter using the pipenv shell command.
+
+Important - Anaconda users may find that Pipenv conflicts with their environment. Please deactivate your conda environment if you find this to be true.
+
+Deprecation warnings about Langchain 0.1.0 and 0.2.0 should be ignored as we are not using these versions!
+
+Project:
+---------
+facts
+\Project\facts
+
+.env
+Pipfile
+facts.txt
+facts.txt
+main
+main.py
+
+
+Run pgm:
+Open VS terminal :
+    cmd: cd D:\Project\facts
+    cmd: pipenv shell
+    cmd: pipenv install
+    
+    cmd: pip install --upgrade langchain langchain_community
+        - Note: the above cmd is only for Windows user as else it will show a pwd module error:
+        - The error occurs because the pwd module is specific to Unix-based systems (like Linux or macOS) and is not available on Windows. This issue arises from a dependency in the langchain_community package.
+
+    cmd: python main.py
+
+
+
+    - Output:
+        - Will show the OPen AI embeddings for the sample text provided in teh pgm
+        - Will split 'facts.txt' into chunks as speciied in pgm and print in console
+
+
+Open Source 
+----------------
+Project = facts_open_source
+\Project\facts_open_source
+
+
+main.py:
+
+    - Note: uses sentence-transformers which uses your local computer resources rather than OpenAI
+
+Run pgm:
+Open VS terminal :
+    cmd: \Project\facts_open_source
+    cmd: pipenv shell
+    cmd: pipenv install
+    
+    cmd: pip install --upgrade langchain langchain_community
+        - Note: the above cmd is only for Windows user as else it will show a pwd module error:
+        - The error occurs because the pwd module is specific to Unix-based systems (like Linux or macOS) and is not available on Windows. This issue arises from a dependency in the langchain_community package.
+
+    cmd: pip install hf_xet
+    cmd: pip install sentence-transformers
+    cmd: pip install langchain-huggingface
+
+    cmd: python main.py
+
+
+
+    - Output:
+        - Will show the OPen AI embeddings for the sample text provided in the pgm
+        - Will split 'facts.txt' into chunks as specified in pgm and print in console

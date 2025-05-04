@@ -1,0 +1,57 @@
+Refer : https://js.langchain.com/docs/integrations/chat/
+
+(1) UnderstandingLangChain_1.png
+	- Optional:
+	 go to pdf.ai -> signup ( needs credit card info) -> select free trial -> upload a pdf -> you can ask any q's regarding the uploaded pdf 
+
+
+(2) UnderstandingLangChain_2.png
+
+(3) UnderstandingLangChain_3.png
+
+(4) UnderstandingLangChain_4.png
+
+(5) UnderstandingLangChain_5.png
+
+(6) UnderstandingLangChain_6.png
+
+(7) UnderstandingLangChain_7.png
+
+(8) UnderstandingLangChain_8.png
+
+(9) UnderstandingLangChain_9.png
+
+(10) UnderstandingLangChain_10.png
+
+(11) UnderstandingLangChain_11.png
+
+(12) UnderstandingLangChain_12.png
+
+(13) UnderstandingLangChain_13.png
+
+(14) UnderstandingLangChain_14.png
+
+(15) UnderstandingLangChain_15.png
+
+(16) UnderstandingLangChain_16.png
+
+(17) UnderstandingLangChain_17.png
+
+(18) UnderstandingLangChain_18.png
+
+(19) UnderstandingLangChain_19.png
+
+(20) UnderstandingLangChain_20.png
+
+(21) UnderstandingLangChain_21.png
+
+(22) UnderstandingLangChain_22.png
+
+(23) UnderstandingLangChain_23.png
+
+(24) UnderstandingLangChain_24.png
+
+
+
+
+

@@ -1,0 +1,6 @@
+
+API reference:
+https://learn.microsoft.com/en-us/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable#analyze-sentiment
+
+
+

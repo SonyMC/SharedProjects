@@ -1,0 +1,26 @@
+ChatGPT & LangChain Integration 
+----------------------------------
+
+
+Section 1 - Using Langchain the simple way:
+------------------------------------------
+LangChainSimple.png
+LangChainSimple_2.png
+
+
+
+Project:
+\Project\pycode
+
+
+
+.env
+Pipfile
+main.py 
+
+
+    - cmd: pipenv shell
+    - cmd: pipenv install
+
+
+    - cmd: python main.py --language javascript --task 'Translate "I am fine" from English to Malayalam'

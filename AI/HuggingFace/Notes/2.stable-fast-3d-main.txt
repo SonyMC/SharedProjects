@@ -1,0 +1,95 @@
+Project: \HuggingFace\Project\stable-fast-3d-main
+
+Refer:
+ https://huggingface.co/stabilityai/stable-fast-3d
+ https://github.com/Stability-AI/stable-fast-3d?tab=readme-ov-file
+
+
+Python >= 3.8
+Optional: CUDA or MPS has to be available
+For Windows (experimental): Visual Studio 2022
+
+Note: 
+Output will be in the format of GLB files
+
+TO view GLB files on WIndows:
+ - Install 3D Viewer
+ OR 
+ - MESHMAN 3D Viewer
+
+
+To view GLB files on VSCODE:
+- Install extension mesh-viewer
+
+NOte:
+Input:\Project\stable-fast-3d-main\demo_files\examples
+OUtput: \Project\stable-fast-3d-main\output
+
+
+(1) Requesting Access and Login
+Our model is gated at Hugging Face:
+
+Log in to Hugging Face and request access .
+Create an access token with read permissions .
+ 
+Optional:
+    - Run huggingface-cli login in the environment and enter the token.
+    - Since we are using .env file to pass the token, we can skip this step
+
+
+
+(2)Download and  Install GCC (MinGW-w64)
+https://www.msys2.org/
+
+
+(3) Open MSYS2 terminal( start-> search for MSYS2):
+install some tools like the mingw-w64 GCC to start compiling projects. Run the following command:
+cmd:pacman -S mingw-w64-ucrt-x86_64-gcc
+
+cmd: gcc --version
+
+
+(4) Python env:
+Run VS Code terminal
+cmd: cd \HuggingFace\Project\stable-fast-3d-main
+cmd: pipenv shell
+
+
+(5)Install Torch for non CUDA and using CPU( significantl slower than NVIDIA CUDA enabled GPU)
+cmd: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+
+
+
+
+(6)Update setuptools by 
+cmd:pip install -U setuptools==69.5.1
+
+
+
+(7)Install wheel 
+cmd:pip install wheel
+
+(8)Install the remaining requirements with 
+cmd:pip install -r requirements.txt. 
+
+
+(9)Install dotenv for environment configs
+cmd:pip install python-dotenv
+
+(10)For the gradio demo, 
+cmd: pip install -r requirements-demo.txt is required.
+
+
+
+(11) Run App:
+cmd:python run.py demo_files/examples/Sony.jpg --output-dir output/
+
+
+(12) For detailed usage of this script:
+cmd: python run.py --help.
+
+
+(13)Customised texture resolution:
+python run.py demo_files/examples/Sony.jpg --output-dir output/ --texture-resolution=2048
+        - Note: Defaulr texture resolution is 1024

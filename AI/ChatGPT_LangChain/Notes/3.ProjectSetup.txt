@@ -1,0 +1,16 @@
+Proj_Setup_1.png
+Proj_Setup_2.png
+
+
+Project:
+
+\Project\pycode
+
+main.py
+\pycode\main.py
+
+VSCode -> Terminal -> New Terminal:
+    - cmd: python main.py
+        - Hi There
+
+
