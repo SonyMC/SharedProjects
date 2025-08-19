@@ -42,7 +42,7 @@ response = client.chat.completions.create(
     messages=messages,              # The conversation history (system + user messages)
     temperature=0.7,                # Controls randomness (0.0 = deterministic, 1.0 = very random)
     max_tokens=256,                 # Maximum number of tokens to generate in the response
-    stream=True                     # Whether to stream the response (False = wait for complete response)
+    stream=False                     # Whether to stream the response (False = wait for complete response)
 )
 
 # Print the model's reply
