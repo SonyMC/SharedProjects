@@ -1,0 +1,54 @@
+CREATE DATABASE web_crawler
+WITH ENGINE = "web";
+
+CREATE VIEW environments (
+    SELECT * FROM web_crawler.crawler
+    WHERE url = 'https://500apps.com/troubleshooting-rest-api'
+    /* 
+    *How many urls(found in the original webpage being crawled) deep it should go scraping this webpage.
+    *So when you make the depth higher, it's going to expolore more and more pages linked to the original website
+
+    */
+    AND crawl_depth = 0 -- just crawl the original webpage
+);
+
+
+SELECT *
+FROM mindsdb.environments 
+LIMIT 50;
+
+
+-- Create a vector enabled db called "environment_kb"
+-- Will allow our data to be looked up in a RAG pipeline
+CREATE KNOWLEDGE_BASE environment_kb 
+USING
+metadata_columns = ["url"], -- from the crawl response
+content_columns = ["text_content"] -- from the crawl response
+
+-- Describe the KB
+DESCRIBE KNOWLEDGE_BASE environment_kb;
+
+-- Insert data into the KB
+INSERT INTO environment_kb
+SELECT url, text_content
+FROM environments
+
+-- Insert with partitions to imrove performance
+-- INSERT INTO environment_kb
+-- SELECT url, text_content
+-- FROM environments
+-- USING 
+--     batch_size = 200,
+--     track_column = url,
+--     threads = 10,
+--     error = 'skip';
+
+
+-- Check contents of KB
+SELECT * FROM environment_kb;
+
+
+-- Query the KB
+SELECT * FROM environment_kb
+WHERE content = 'how to find potential issues with my REST endpoint?'
+AND relevance >= 0.6 --  indicates how relevant the content is to a query or topic. Here take things that are more the 60 percent relevant

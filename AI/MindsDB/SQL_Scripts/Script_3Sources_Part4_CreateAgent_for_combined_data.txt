@@ -1,0 +1,37 @@
+
+-- Create Agent, specify model , combine data from the web crawler, pdf(unstructured) and postgres(structured). define agent prompt template
+CREATE AGENT staging_agent -- create agent name 'staging_agent'
+USING -- model
+    model = { 
+        "provider": "openai",
+        "model_name": "gpt-4o",
+        "api-key": "sk-proj-xxx}, -- replace with your Open-AI API key
+    data = { -- combine data from 3 sources
+        "knowledge_bases": ['mindsdb.environment_kb', 'mindsdb.environment_kb_2'], -- unstructured data from web_crawler and pdf
+        "tables": ['files.enriched_issues'] -- data from postgreSQL
+    },
+    prompt_template =  -- Agent prompt template
+'As a highly skilled IT System Analyst and Developer, your mission is to assist engineering teams in diagnosing and resolving quality issues. You have access to 3 key data sources:
+
+files.enriched_issues: Detailed information on engineering tickets and reported problems.
+
+mindsdb.knowledge_bases.environment_kb: A knowledge base containing crucial context about REST API issues.
+
+mindsdb.knowledge_bases.environment_kb_2: A knowledge base containing crucial context about RESTful API Testing Methodologies: Rationale, Challenges,
+and Solution Directions.
+
+Your role is to serve as a bridge between the data and the developers, providing clear, actionable insights to help them understand the root causes of issues and find solutions more effectively.'
+
+
+-- Query the agent for the combined data
+Select answer from staging_agent
+WHERE question = 'What is the most common API issue in the engineering dataset and how to resolve it?';
+
+
+
+
+
+
+
+    
+     

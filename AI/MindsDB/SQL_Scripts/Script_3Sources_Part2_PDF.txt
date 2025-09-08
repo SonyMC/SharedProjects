@@ -1,0 +1,36 @@
+--- MindsDB ships with a filesystem database called 'files'
+--- Each file you uploaded is saved as a table there.
+---
+--- You can always check the list tables in files as follows:
+
+SHOW TABLES FROM files;
+
+--- These files can be queried as tables,
+--- You just uploaded RESTful_API_Testing
+
+SELECT * FROM files.RESTful_API_Testing LIMIT 10;
+
+
+CREATE KNOWLEDGE_BASE environment_kb_2 
+USING
+metadata_columns = ["metadata"], -- from the select response above
+content_columns = ["content"] -- from the select response above
+
+-- Describe the Knowledge BAse
+DESCRIBE KNOWLEDGE_BASE environment_kb_2;
+
+
+
+-- Insert data into the KB
+INSERT INTO environment_kb_2
+SELECT content
+FROM files.restful_api_testing;
+
+-- Check contents of KB
+SELECT * FROM environment_kb_2;
+
+
+-- Query the KB
+SELECT * FROM environment_kb_2
+WHERE content = 'what are the main challenges being faced while testing RESTful APIs?'
+AND relevance >= 0.6 --  indicates how relevant the content is to a query or topic. Here take things that are more the 60 percent relevant

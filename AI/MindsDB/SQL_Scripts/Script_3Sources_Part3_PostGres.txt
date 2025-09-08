@@ -1,0 +1,21 @@
+-- Establish a connection to your PostgreSQL database from MindsDB
+CREATE DATABASE datasource_pg 
+WITH ENGINE = 'postgres', 
+PARAMETERS = {
+    "user": "demo_user",
+    "password": "demo_password",
+    "host": "samples.mindsdb.com",
+    "port": 5432,
+    "database": "demo",    
+    "schema": "demo"
+};
+
+
+-- Enrich data with what is returned from the LLM
+-- Will take some columns from a table and pass it to the LLM, and with what is returned from the LLM create a new column 
+CREATE TABLE files.enriched_issues( -- create a table 'enriched_issues' under files
+    SELECT
+    issue, environment, error_rate, impacted_customers, severity, -- columns from datasource_pg.engineering_dataset
+    LLM('Determine a possible fix for this issue: ' || issue) as possible_fix -- pass to LLM to find a possible fix for the issue passes using the pipe operator. The fix will be added as a new column 'possible_fix' in the table 'files.enriched_issues' 
+    FROM datasource_pg.engineering_dataset -- datasource_pg.engineering_dataset
+)
