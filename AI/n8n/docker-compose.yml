@@ -4,7 +4,8 @@ services:
   # Main n8n service configuration
   n8n:
     image: n8nio/n8n:latest # Official n8n Docker image
-    restart: always # Ensures n8n restarts automatically if it crashes or after system reboot
+    restart: no # Disable auto-restart for n8n
+    #restart: always # Ensures n8n restarts automatically if it crashes or after system reboot
     ports:
       - "5678:5678" # Maps host port 5678 to container port 5678 (n8n web interface)
     environment:
@@ -18,20 +19,25 @@ services:
       - ./n8n-data:/home/node/.n8n # Persists n8n data to local folder
     depends_on:
       - postgres # Ensures database is started before n8n
+    #command: start --tunnel # Enables n8n's built-in tunnel feature for easy external access  
 
   # PostgreSQL database service for n8n
   postgres:
     image: postgres:15 # PostgreSQL database version 15
-    restart: always # Auto-restart policy
+    restart: no # Disable auto-restart for postgres
+    #restart: always # Auto-restart policy
     environment:
       - POSTGRES_USER=n8n # Database username
-      - POSTGRES_PASSWORD=KeepRoaring  # Database password - CHANGE THIS in production!
+      - POSTGRES_PASSWORD=Integrity  # Database password - CHANGE THIS in production!
       - POSTGRES_DB=n8n # Database name
     volumes:
       - postgres-data:/var/lib/postgresql/data # Persists database data in a Docker volume
     ports:
       - "5432:5432" # Maps host port 5432 to container port 5432 (PostgreSQL)
 
+
 # Define named volumes used by services
 volumes:
   postgres-data: # Volume for PostgreSQL data persistence
+
+
