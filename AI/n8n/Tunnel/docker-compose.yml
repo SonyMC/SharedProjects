@@ -12,7 +12,6 @@ services:
       - N8N_ENCRYPTION_KEY=your-key  # Used to encrypt credentials - CHANGE THIS in production!
       - NODE_ENV=production # Run in production mode for better performance
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false # Allows access to environment variables within nodes
-      - N8N_RUNNERS_ENABLED=true # Enables the new task runners feature for better performance
       - DB_TYPE=postgresdb # Specifies PostgreSQL as the database type
       - DB_POSTGRESDB_HOST=postgres # Hostname of the PostgreSQL service
       - DB_POSTGRESDB_PORT=5432 # Port of the PostgreSQL service
@@ -23,12 +22,27 @@ services:
       - N8N_COMMUNITY_PACKAGES_ENABLED=true # Enables installation of community packages
       - DB_SQLITE_POOL_SIZE=2 # Sets the connection pool size for SQLite database. Note: Though we are using Postgres, this setting is still required.
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false # Disables strict file permissions for settings file. Note: This may have security implications.
-      - WEBHOOK_URL=https://<your-tunnel>/ # Replace <your-tunnel> with the  URL for webhook tunneling (service accessible externally)
+      - N8N_RUNNERS_ENABLED=true # Enables the new task runners feature for better performance
+      - N8N_RUNNERS_MODE=external # Enables external task runners
+      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0 # Broker listen address for task runners
+      - N8N_RUNNERS_AUTH_TOKEN=your-key # Authentication token for task runners - CHANGE THIS in production!
+      - N8N_NATIVE_PYTHON_RUNNER=true # Enables native Python runner for Python nodes
+      - WEBHOOK_URL=https://n8n.codezaddy.in/ # Replace <your-tunnel> with the  URL for webhook tunneling (service accessible externally)
       - N8N_PROTOCOL=https # Use HTTPS for secure connections
     volumes:
       - ./n8n-data:/home/node/.n8n # Persists n8n data to local folder
     depends_on:
       - postgres # Ensures database is started before n8n
+
+# Task runners service for n8n
+  task-runners:
+    image: n8nio/runners:1.111.0
+    container_name: n8n-runners
+    environment:
+      - N8N_RUNNERS_TASK_BROKER_URI=http://n8n-main:5679
+      - N8N_RUNNERS_AUTH_TOKEN=your-key # Authentication token for task runners - CHANGE THIS in production!
+    depends_on:
+      - n8n      
 
   # PostgreSQL database service for n8n
   postgres:

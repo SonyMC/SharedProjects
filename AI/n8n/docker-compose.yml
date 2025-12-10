@@ -1,32 +1,47 @@
 services:
   # Main n8n service configuration
   n8n:
-    image: n8nio/n8n:latest # Official n8n Docker image
+    image: n8nio/n8n:latest # Official ns8n Docker image
     restart: no # Disable auto-restart for n8n
     #restart: always # Ensures n8n restarts automatically if it crashes or after system reboot
     ports:
       - "5678:5678" # Maps host port 5678 to container port 5678 (n8n web interface)
     environment:
-      - N8N_PROTOCOL=http # Protocol for n8n server (use https for production with proper certificates)
       - N8N_HOST=localhost # Hostname where n8n will be available
       - N8N_PORT=5678 # Port inside the container
-      - N8N_ENCRYPTION_KEY=YourKey  # Used to encrypt credentials - CHANGE THIS in production!
+      - N8N_ENCRYPTION_KEY=<your-key>  # Used to encrypt credentials - CHANGE THIS in production!
       - NODE_ENV=production # Run in production mode for better performance
-      - WEBHOOK_URL=http://localhost:5678/ # Base URL for webhooks execution
       - N8N_BLOCK_ENV_ACCESS_IN_NODE=false # Allows access to environment variables within nodes
-      - N8N_RUNNERS_ENABLED=true # Enables the new task runners feature for better performance
-      - N8N_DATABASE_TYPE=postgresdb # Specifies PostgreSQL as the database type
+      - DB_TYPE=postgresdb # Specifies PostgreSQL as the database type
+      - DB_POSTGRESDB_HOST=postgres # Hostname of the PostgreSQL service
+      - DB_POSTGRESDB_PORT=5432 # Port of the PostgreSQL service
+      - DB_POSTGRESDB_DATABASE=n8n # Database name
+      - DB_POSTGRESDB_USER=n8n # Database username
+      - DB_POSTGRESDB_PASSWORD=<your-key> # Database password
       - N8N_GIT_NODE_DISABLE_BARE_REPOS=true # Disables bare repositories in Git nodes for security
       - N8N_COMMUNITY_PACKAGES_ENABLED=true # Enables installation of community packages
       - DB_SQLITE_POOL_SIZE=2 # Sets the connection pool size for SQLite database. Note: Though we are using Postgres, this setting is still required.
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=false # Disables strict file permissions for settings file. Note: This may have security implications.
+      - N8N_RUNNERS_ENABLED=true # Enables the new task runners feature for better performance
+      - N8N_RUNNERS_MODE=external # Enables external task runners
+      - N8N_RUNNERS_BROKER_LISTEN_ADDRESS=0.0.0.0 # Broker listen address for task runners
+      - N8N_RUNNERS_AUTH_TOKEN=<your-key> # Authentication token for task runners - CHANGE THIS in production!
+      - N8N_NATIVE_PYTHON_RUNNER=true # Enables native Python runner for Python nodes           
+      - WEBHOOK_URL=https://localhost/ # URL 
     volumes:
-      - n8n-data:/home/node/.n8n # Persists n8n data to local folder
-    networks:
-      - connect      
+      - ./n8n-data:/home/node/.n8n # Persists n8n data to local folder
     depends_on:
       - postgres # Ensures database is started before n8n
-    #command: start --tunnel # Enables n8n's built-in tunnel feature for easy external access  
+
+# Task runners service for n8n
+  task-runners:
+    image: n8nio/runners:1.111.0
+    container_name: n8n-runners
+    environment:
+      - N8N_RUNNERS_TASK_BROKER_URI=http://n8n-main:5679
+      - N8N_RUNNERS_AUTH_TOKEN=<your-key> # Authentication token for task runners - CHANGE THIS in production!
+    depends_on:
+      - n8n
 
   # PostgreSQL database service for n8n
   postgres:
@@ -35,21 +50,16 @@ services:
     #restart: always # Auto-restart policy
     environment:
       - POSTGRES_USER=n8n # Database username
-      - POSTGRES_PASSWORD=YourKey  # Database password - CHANGE THIS in production!
+      - POSTGRES_PASSWORD=<your-key>  # Database password - CHANGE THIS in production!
       - POSTGRES_DB=n8n # Database name
     volumes:
       - postgres-data:/var/lib/postgresql/data # Persists database data in a Docker volume
     ports:
       - "5432:5432" # Maps host port 5432 to container port 5432 (PostgreSQL)
-    networks:
-      - connect      
 
 # Define named volumes used by services
 volumes:
   n8n-data: # Volume for n8n data persistence
   postgres-data: # Volume for PostgreSQL data persistence
 
-# Define network configuration for services
-networks:
-  connect:
-    driver: bridge
+
