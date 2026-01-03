@@ -6,12 +6,12 @@ services:
     restart: no
     ports: 
       - "3000:3000"
-    environment:
-      - WAHA_API_KEY=<your-key-here>
-      - WAHA_DASHBOARD_USERNAME=<your-username-here>
-      - WAHA_DASHBOARD_PASSWORD=<your-pwd-here>
-      - WHATSAPP_SWAGGER_USERNAME=<your-username-here>
-      - WHATSAPP_SWAGGER_PASSWORD=<your-pwd-here>
+#    environment:
+#      - WAHA_API_KEY=<your-key-here>
+#      - WAHA_DASHBOARD_USERNAME=<your-username-here>
+#      - WAHA_DASHBOARD_PASSWORD=<your-pwd-here>
+#      - WHATSAPP_SWAGGER_USERNAME=<your-username-here>
+#      - WHATSAPP_SWAGGER_PASSWORD=<your-pwd-here>
     volumes:
       - waha-data:/data
     networks:
