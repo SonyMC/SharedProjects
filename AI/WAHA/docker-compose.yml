@@ -19,7 +19,7 @@ services:
 
   # Main n8n service configuration
   n8n:
-    image: n8nio/n8n:2.2.1 
+    image: n8nio/n8n:2.6.3 
     restart: no # Disable auto-restart for n8n
     #restart: always # Ensures n8n restarts automatically if it crashes or after system reboot
     ports:
